@@ -3,22 +3,26 @@ package cs342.animals;
 public abstract class Animal {
 
     public String getName() {
-        return "¯\\_(ツ)_/¯";
+        return "🤷";
     }
 
     public boolean isWarmBlooded() {
         return false;
     }
 
-    public boolean isWaterLiving() {
+    public boolean isLivingUnderWater() {
         return false;
     }
 
-    public boolean isNamedAfterUsState() {
+    public boolean isNamedAfterEuropeanCountry() {
         return false;
     }
 
     public boolean canChangeColor() {
+        return false;
+    }
+
+    public boolean isBlackAndWhite() {
         return false;
     }
 }

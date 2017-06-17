@@ -49,15 +49,19 @@ public class Main {
       .type(Arguments.booleanType())
       .required(true);
 
-    parser.addArgument("--water")
+    parser.addArgument("--underwater")
       .type(Arguments.booleanType())
       .required(true);
 
-    parser.addArgument("--statename")
+    parser.addArgument("--euroname")
       .type(Arguments.booleanType())
       .required(true);
 
     parser.addArgument("--changecolor")
+      .type(Arguments.booleanType())
+      .required(true);
+
+    parser.addArgument("--blackandwhite")
       .type(Arguments.booleanType())
       .required(true);
 
@@ -70,7 +74,7 @@ public class Main {
     }
 
     HashSet<Animal> animalTypes = new HashSet<>();
-    animalTypes.add(new AlaskanHusky());
+    animalTypes.add(new ShibaInu());
     animalTypes.add(new Cameleon());
     animalTypes.add(new GermanShepard());
     animalTypes.add(new Beluga());
@@ -79,10 +83,10 @@ public class Main {
 
     HashMap<String, Boolean> filterSettings = new HashMap<>();
     filterSettings.put("isWarmBlooded", res.get("warmblood"));
-    filterSettings.put("isWaterLiving", res.get("water"));
-    filterSettings.put("isWaterLiving", res.get("water"));
-    filterSettings.put("isNamedAfterUsState", res.get("statename"));
+    filterSettings.put("isLivingUnderWater", res.get("underwater"));
+    filterSettings.put("isNamedAfterEuropeanCountry", res.get("euroname"));
     filterSettings.put("canChangeColor", res.get("changecolor"));
+    filterSettings.put("isBlackAndWhite", res.get("blackandwhite"));
     
     for (String methodName : filterSettings.keySet()) {
       boolean argValue = filterSettings.get(methodName).booleanValue();
