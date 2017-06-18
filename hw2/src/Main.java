@@ -20,13 +20,13 @@ public class Main {
 
     HashSet<Animal> filteredAnimals = new HashSet<>();
     boolean testResult;
-    for (Animal anAnimal : currentOptions) {
 
+    for (Animal anAnimal : currentOptions) {
       try {
         Method testMethod = anAnimal.getClass().getMethod(methodName);
         testResult = (boolean) testMethod.invoke(anAnimal);
       } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-          continue;
+        continue;
       }
 
       if (testResult != filterOption) {
@@ -42,7 +42,7 @@ public class Main {
   public static void main(String[] args) {
     
     ArgumentParser parser = ArgumentParsers
-      .newArgumentParser("prog")
+      .newArgumentParser("run")
       .defaultHelp(true);
     
     parser.addArgument("--warmblood")
@@ -67,15 +67,15 @@ public class Main {
 
     Namespace res;
     try {
-        res = parser.parseArgs(args);
+      res = parser.parseArgs(args);
     } catch (ArgumentParserException e) {
-        parser.handleError(e);
-        return;
+      parser.handleError(e);
+      return;
     }
 
     HashSet<Animal> animalTypes = new HashSet<>();
     animalTypes.add(new ShibaInu());
-    animalTypes.add(new Cameleon());
+    animalTypes.add(new Chameleon());
     animalTypes.add(new GermanShepard());
     animalTypes.add(new Beluga());
     animalTypes.add(new Orca());
