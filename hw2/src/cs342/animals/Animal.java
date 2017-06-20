@@ -7,7 +7,7 @@ public abstract class Animal {
     }
 
     public boolean isWarmBlooded() {
-        return false;
+        return true;
     }
 
     public boolean isLivingUnderWater() {
