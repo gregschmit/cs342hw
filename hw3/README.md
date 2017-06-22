@@ -16,20 +16,20 @@ This is where you'll write your code for this assignment.  You can edit the
 files in this directory, and create new files as needed.  The classes in this
 directory each represent a different type of file.  You goal is to
 
-1. correctly taxonomize the file types here, according to their mime types
-   (ex the MimedPngFile class represents the `image/png` mime type, and
-   so should be put in the type hierarchy in a location like
-   `MimedFile > MimedImageFile > MimedPngFile`).  You should create any needed
-   additional classes needed to correctly and completely taxonomize these types.
-2. implement and abstract methods where it makes sense.  Types that are
-   only in the system for classification reasons should be `abstract`, and
-   methods that will only be implemented in child classes should also
-   be `abstract`.  In short, make sure your functionality is implemented
-   where it makes the most sense.
-3. implement the interfaces for their correct types.  Java's interface
-   system allows you to categorize functionality that cuts across the
-   type taxonomy.  You should implement each interface discussed in the
-   next section, for each type it makes sense.
+1.  correctly taxonomize the file types here, according to their mime types
+    (ex the MimedPngFile class represents the `image/png` mime type, and
+    so should be put in the type hierarchy in a location like
+    `MimedFile > MimedImageFile > MimedPngFile`).  You should create any needed
+    additional classes needed to correctly and completely taxonomize these types.
+2.  implement and abstract methods where it makes sense.  Types that are
+    only in the system for classification reasons should be `abstract`, and
+    methods that will only be implemented in child classes should also
+    be `abstract`.  In short, make sure your functionality is implemented
+    where it makes the most sense.
+3.  implement the interfaces for their correct types.  Java's interface
+    system allows you to categorize functionality that cuts across the
+    type taxonomy.  You should implement each interface discussed in the
+    next section, for each type it makes sense.
 
 
 ### cs342/interfaces
@@ -49,23 +49,24 @@ to better understand how the command line application works.
 Requirements
 ---
 Receiving full credit for this assignment requires that you correctly
-1. categorize / taxonomize all of the file types give in the `cs342/filetypes`
-   directory
-2. correctly implement the needed methods on those types
-3. mark the classes and methods as `abstract` where it makes sense, and only
-   include method implementation where its useful and clean.
-4. implement all the interfaces on all the types that make sense. If this
-   is done correctly, you should implement the interfaces 9 times in the
-   8 classes (i.e. one class will implement multiple interfaces).
-5. handle errors reasonably.  This does not need to be extensive or
-   comprehensive, but when your code encounters an exceptional case where it
-   cannot reasonably continue, you should print a message to
-   [STDERR](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_.28stderr.29)
-   (not **STDOUT**!) describing the error you've encountered, and end execution.
-   These error messages should be informative to the user, and specific to the
-   error encountered.  For example "Was not able to read the zip file,
-   it's password protected" is a good error to print out,
-   "IOException, quitting" is a bad message to print out.
+
+1.  categorize / taxonomize all of the file types give in the `cs342/filetypes`
+    directory
+2.  correctly implement the needed methods on those types
+3.  mark the classes and methods as `abstract` where it makes sense, and only
+    include method implementation where its useful and clean.
+4.  implement all the interfaces on all the types that make sense. If this
+    is done correctly, you should implement the interfaces 9 times in the
+    8 classes (i.e. one class will implement multiple interfaces).
+5.  handle errors reasonably.  This does not need to be extensive or
+    comprehensive, but when your code encounters an exceptional case where it
+    cannot reasonably continue, you should print a message to
+    [STDERR](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_.28stderr.29)
+    (not **STDOUT**!) describing the error you've encountered, and end execution.
+    These error messages should be informative to the user, and specific to the
+    error encountered.  For example "Was not able to read the zip file,
+    it's password protected" is a good error to print out,
+    "IOException, quitting" is a bad message to print out.
    
 Your repo includes a PDF parsing library.  The `makefile` is configured so
 that you can use this library in your solution.
@@ -77,9 +78,7 @@ either in the form of third party libraries, or copy-pasted from classmates
 or websites.
 
 You are allowed to use any of the documentation provided by Oracle or the
-PDFBox library.  You are also encouraged to discuss on Piazza.  You are
-**prohibited** from using use other, outside sources like StackOverflow.
-If you're discovered doing so, it will be treated as academic dishonesty.
+PDFBox library.  You are also encouraged to discuss on Piazza.
 
 Your code should never throw an Exception or dump a stracktrace to the console.
 It should handle all errors correctly and internally.  Doing so will loose
