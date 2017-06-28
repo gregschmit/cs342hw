@@ -12,5 +12,5 @@ interface Multipart {
    * should be the number of files in the archive.  In the case of a multi-page
    * document, this should be the number of pages.
    */
-  public abstract Integer getNumParts();
+  public Integer getNumParts();
 }

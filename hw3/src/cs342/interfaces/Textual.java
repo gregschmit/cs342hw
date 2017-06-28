@@ -13,11 +13,11 @@ interface Textual {
    * Implementing classes should implement this method to return the number
    * of lines of text in the text file / data they're representing.
    */
-  public abstract Integer getNumberOfLines();
+  public Integer getNumberOfLines();
 
   /**
    * Implementing classes should implement this method to return an ArrayList
    * containing each of the lines of text in the text file being represented.
    */
-  public abstract ArrayList<String> getLinesOfText();
+  public ArrayList<String> getLinesOfText();
 }

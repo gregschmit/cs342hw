@@ -14,7 +14,7 @@ interface Graphical {
    * represented is a document, it should be the height of the document in
    * whatever expression makes sense (inches, cm, etc.).
    */
-  public abstract Integer getHeight();
+  public Integer getHeight();
 
   /**
    * Implementing classes must implement this method to return the width of
@@ -23,5 +23,5 @@ interface Graphical {
    * represented is a document, it should be the height of the document in
    * whatever expression makes sense (inches, cm, etc.).
    */
-  public abstract Integer getWidth();
+  public Integer getWidth();
 }
