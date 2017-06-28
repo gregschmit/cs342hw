@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Class for representing Javascript files (mime type application/x-javascript).
  */
-public class MimedJavascriptFile extends MimedApplicationType {
+public class MimedJavascriptFile extends MimedApplicationType implements Textual {
 
   MimedJavascriptFile(File file) {
     super(file);
@@ -14,5 +14,13 @@ public class MimedJavascriptFile extends MimedApplicationType {
 
   public String getMimeSubTypeName() {
     return "x-javascript";
+  }
+
+  public Integer getNumberOfLines() {
+    return this.getLineCount();
+  }
+
+  public ArrayList<String> getLinesOfText() {
+    return this.getLines();
   }
 }

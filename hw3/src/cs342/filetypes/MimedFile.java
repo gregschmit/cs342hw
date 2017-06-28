@@ -1,6 +1,12 @@
 // https://docs.oracle.com/javase/8/docs/api/java/io/File.html
 import java.io.File;
 
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+
 public abstract class MimedFile {
 
   protected File file;
@@ -56,5 +62,66 @@ public abstract class MimedFile {
       size = 0L;
     }
     return size;
+  }
+
+  protected Integer getLineCount() {
+    BufferedReader br = null;
+    int numlines = 0;
+    try {
+      br = new BufferedReader(new FileReader(this.file));
+    } catch (FileNotFoundException e) {
+      System.err.println("fileinfo: file or directory not found");
+      try {
+        br.close();
+      } catch (IOException ed) {
+        System.err.println("fileinfo: couldn't close, but it might be ok...");
+      }
+      return 0;
+    }
+    try {
+      while (br.readLine() != null) {
+        numlines++;
+      }
+    } catch (IOException e) {
+      System.err.println("fileinfo: error while reading file");
+      return 0;
+    }
+    try {
+      br.close();
+    } catch (IOException e) {
+      System.err.println("fileinfo: couldn't close, but it might be ok...");
+    }
+    return numlines;
+  }
+
+  protected ArrayList<String> getLines() {
+    ArrayList<String> result = new ArrayList<String>();
+    BufferedReader br = null;
+    try {
+      br = new BufferedReader(new FileReader(this.file));
+    } catch (FileNotFoundException e) {
+      System.err.println("fileinfo: file or directory not found");
+      try {
+        br.close();
+      } catch (IOException ed) {
+        System.err.println("fileinfo: couldn't close, but it might be ok...");
+      }
+      return null;
+    }
+    try {
+      String line = null;
+      while ((line = br.readLine()) != null) {
+        result.add(line);
+      }
+    } catch (IOException e) {
+      System.err.println("fileinfo: error while reading file");
+      return null;
+    }
+    try {
+      br.close();
+    } catch (IOException e) {
+      System.err.println("fileinfo: couldn't close, but it might be ok...");
+    }
+    return result;
   }
 }

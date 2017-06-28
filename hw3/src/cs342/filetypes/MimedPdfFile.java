@@ -17,7 +17,7 @@ import java.lang.Math;
 /**
  * Class for representing PDF files (mime type application/pdf).
  */
-public class MimedPdfFile extends MimedApplicationType implements Graphical {
+public class MimedPdfFile extends MimedApplicationType implements Graphical, Multipart {
 
   MimedPdfFile(File file) {
     super(file);
@@ -27,12 +27,42 @@ public class MimedPdfFile extends MimedApplicationType implements Graphical {
     return "pdf";
   }
 
+  private PDRectangle getBox() {
+    PDDocument doc = null;
+    try {
+      doc = PDDocument.load(this.file);
+    } catch (IOException e) {
+      System.err.println("fileinfo: couldn't open pdf");
+      return null;
+    }
+    PDPage firstpage;
+    if (doc.getNumberOfPages() > 0) {
+      firstpage = doc.getPage(0);
+    } else {
+      System.err.println("fileinfo: pdf seems to have no pages");
+      return null;
+    }
+    return firstpage.getArtBox();
+  }
+
   public Integer getHeight() {
-    //ImageReader image = new ImageReader(this.file);
-    return 0;
+    PDRectangle box = this.getBox();
+    return Math.round(box.getHeight());
   }
 
   public Integer getWidth() {
-    return 0;
+    PDRectangle box = this.getBox();
+    return Math.round(box.getWidth());
+  }
+
+  public Integer getNumParts() {
+    PDDocument doc = null;
+    try {
+      doc = PDDocument.load(this.file);
+    } catch (IOException e) {
+      System.err.println("fileinfo: couldn't open pdf");
+      return null;
+    }
+    return doc.getNumberOfPages();
   }
 }

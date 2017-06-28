@@ -14,7 +14,7 @@ import java.util.zip.ZipException;
 /**
  * Class for representing ZIP files (mime type application/zip).
  */
-public class MimedZipFile extends MimedApplicationType {
+public class MimedZipFile extends MimedApplicationType implements Multipart {
 
   MimedZipFile(File file) {
     super(file);
@@ -22,5 +22,9 @@ public class MimedZipFile extends MimedApplicationType {
 
   public String getMimeSubTypeName() {
     return "zip";
+  }
+
+  public Integer getNumParts() {
+    return this.getNumFilesArchived();
   }
 }

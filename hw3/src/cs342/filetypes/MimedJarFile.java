@@ -10,7 +10,7 @@ import java.util.zip.ZipException;
 /**
  * Class for representing Jar files (mime type application/x-java-archive).
  */
-public class MimedJarFile extends MimedApplicationType {
+public class MimedJarFile extends MimedApplicationType implements Multipart {
 
   MimedJarFile(File file) {
     super(file);
@@ -18,5 +18,9 @@ public class MimedJarFile extends MimedApplicationType {
 
   public String getMimeSubTypeName() {
     return "x-java-archive";
+  }
+
+  public Integer getNumParts() {
+    return this.getNumFilesArchived();
   }
 }

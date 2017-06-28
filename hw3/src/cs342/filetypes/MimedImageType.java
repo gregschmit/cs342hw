@@ -22,67 +22,55 @@ public abstract class MimedImageType extends MimedFile implements Graphical {
     return "image";
   }
 
+  private class ImageDims {
+    int i_height;
+    int i_width;
+    boolean err;
+    ImageDims(File file) {
+      ImageInputStream stream = null;
+      Iterator<ImageReader> readers = null;
+      try {
+        stream = ImageIO.createImageInputStream(file);
+        readers = ImageIO.getImageReaders(stream);
+      } catch (IOException | IllegalArgumentException e1) {
+        System.err.println("fileinfo: exception while getting image dims");
+        this.err = true;
+      }
+      if (!this.err && readers.hasNext()) {
+        ImageReader reader = readers.next();
+        try {
+          reader.setInput(stream, true);
+        } catch (IllegalArgumentException e) {
+          System.err.println("fileinfo: exception while getting image dims");
+          this.err = true;
+        }
+        if (!this.err) {
+          try {
+            this.i_width = reader.getWidth(0);
+            this.i_height = reader.getHeight(0);
+          } catch (IllegalStateException | IndexOutOfBoundsException | IOException e) {
+            System.err.println("fileinfo: exception while getting image dims");
+            this.err = true;
+          }
+        }
+        reader.dispose();
+      } else {
+        this.err = true;
+      }
+      if (this.err) {
+        this.i_height = 0;
+        this.i_width = 0;
+      }
+    }
+  }
+
   public Integer getHeight() {
-    int height;
-    ImageInputStream stream;
-    Iterator<ImageReader> readers;
-    try {
-      stream = ImageIO.createImageInputStream(this.file);
-      readers = ImageIO.getImageReaders(stream);
-    } catch (IOException | IllegalArgumentException e1) {
-      System.err.println("fileinfo: exception while getting image height");
-      return 0;
-    }
-    if (readers.hasNext()) {
-      ImageReader reader = readers.next();
-      try {
-        reader.setInput(stream, true);
-      } catch (IllegalArgumentException e) {
-        System.err.println("fileinfo: exception while getting image height");
-        return 0;
-      }
-      try {
-        height = reader.getHeight(0);
-      } catch (IllegalStateException | IndexOutOfBoundsException | IOException e) {
-        System.err.println("fileinfo: exception while getting image height");
-        return 0;
-      }
-      reader.dispose();
-    } else {
-      height = 0;
-    }
-    return height;
+    ImageDims dims = new ImageDims(this.file);
+    return dims.i_height;
   }
 
   public Integer getWidth() {
-    int width;
-    ImageInputStream stream;
-    Iterator<ImageReader> readers;
-    try {
-      stream = ImageIO.createImageInputStream(this.file);
-      readers = ImageIO.getImageReaders(stream);
-    } catch (IOException | IllegalArgumentException e1) {
-      System.err.println("fileinfo: exception while getting image width");
-      return 0;
-    }
-    if (readers.hasNext()) {
-      ImageReader reader = readers.next();
-      try {
-        reader.setInput(stream, true);
-      } catch (IllegalArgumentException e) {
-        System.err.println("fileinfo: exception while getting image width");
-        return 0;
-      }
-      try {
-        width = reader.getWidth(0);
-      } catch (IllegalStateException | IndexOutOfBoundsException | IOException e) {
-        System.err.println("fileinfo: exception while getting image width");
-        return 0;
-      }
-      reader.dispose();
-    } else {
-      width = 0;
-    }
-    return width;
+    ImageDims dims = new ImageDims(this.file);
+    return dims.i_width;
   }
 }

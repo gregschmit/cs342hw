@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Class for representing HTML files (mime type text/html).
  */
-public class MimedHtmlFile extends MimedTextType  {
+public class MimedHtmlFile extends MimedTextType implements Textual {
 
   MimedHtmlFile(File file) {
     super(file);
@@ -14,5 +14,9 @@ public class MimedHtmlFile extends MimedTextType  {
 
   public String getMimeSubTypeName() {
     return "html";
+  }
+
+  public ArrayList<String> getLinesOfText() {
+    return this.getLines();
   }
 }

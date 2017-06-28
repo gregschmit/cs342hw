@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Class for representing Text files (mime type text).
  */
-public abstract class MimedTextType extends MimedFile {
+public abstract class MimedTextType extends MimedFile implements Textual {
 
   MimedTextType(File file) {
     super(file);
@@ -14,5 +14,13 @@ public abstract class MimedTextType extends MimedFile {
 
   public String getMimeTopLevelTypeName() {
     return "text";
+  }
+
+  public Integer getNumberOfLines() {
+    return this.getLineCount();
+  }
+
+  public ArrayList<String> getLinesOfText() {
+    return this.getLines();
   }
 }
