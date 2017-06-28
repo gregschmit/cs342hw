@@ -15,11 +15,24 @@ import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import java.lang.Math;
 
 /**
- * Class for representing Text files (mime type application/pdf).
+ * Class for representing PDF files (mime type application/pdf).
  */
-public class MimedPdfFile extends MimedFile {
+public class MimedPdfFile extends MimedApplicationType implements Graphical {
 
   MimedPdfFile(File file) {
     super(file);
+  }
+
+  public String getMimeSubTypeName() {
+    return "pdf";
+  }
+
+  public Integer getHeight() {
+    //ImageReader image = new ImageReader(this.file);
+    return 0;
+  }
+
+  public Integer getWidth() {
+    return 0;
   }
 }

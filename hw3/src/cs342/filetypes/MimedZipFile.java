@@ -12,11 +12,15 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 
 /**
- * Class for representing Text files (mime type application/zip).
+ * Class for representing ZIP files (mime type application/zip).
  */
-public class MimedZipFile extends MimedFile {
+public class MimedZipFile extends MimedApplicationType {
 
   MimedZipFile(File file) {
     super(file);
+  }
+
+  public String getMimeSubTypeName() {
+    return "zip";
   }
 }

@@ -4,15 +4,15 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * Class for representing Plain (text) files (mime type text/plain).
+ * Class for representing Text files (mime type text).
  */
-public class MimedTextFile extends MimedTextType {
+public abstract class MimedTextType extends MimedFile {
 
-  MimedTextFile(File file) {
+  MimedTextType(File file) {
     super(file);
   }
 
-  public String getMimeSubTypeName() {
-    return "plain";
+  public String getMimeTopLevelTypeName() {
+    return "text";
   }
 }

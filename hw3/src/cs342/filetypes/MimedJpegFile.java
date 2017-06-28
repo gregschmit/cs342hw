@@ -8,11 +8,15 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
- * Class for representing Text files (mime type image/jpeg).
+ * Class for representing JPG files (mime type image/jpeg).
  */
-public class MimedJpegFile extends MimedFile {
+public class MimedJpegFile extends MimedImageType {
 
   MimedJpegFile(File file) {
     super(file);
+  }
+
+  public String getMimeSubTypeName() {
+    return "jpeg";
   }
 }

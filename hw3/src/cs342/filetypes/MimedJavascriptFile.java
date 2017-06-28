@@ -4,11 +4,15 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * Class for representing Text files (mime type application/x-javascript).
+ * Class for representing Javascript files (mime type application/x-javascript).
  */
-public class MimedJavascriptFile extends MimedFile {
+public class MimedJavascriptFile extends MimedApplicationType {
 
   MimedJavascriptFile(File file) {
     super(file);
+  }
+
+  public String getMimeSubTypeName() {
+    return "x-javascript";
   }
 }

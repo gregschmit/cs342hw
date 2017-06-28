@@ -1,7 +1,7 @@
 // https://docs.oracle.com/javase/8/docs/api/java/io/File.html
 import java.io.File;
 
-public class MimedFile {
+public abstract class MimedFile {
 
   protected File file;
 
@@ -19,24 +19,20 @@ public class MimedFile {
   final public String getFullMimeType() {
     return this.getMimeTopLevelTypeName() + "/" + this.getMimeSubTypeName();
   }
-  
+
   /**
    * Returns the top level mime type.  For example, zip files have the mimetype
    * "application/zip".  In this case, this method should return the string
    * "application".
    */
-  public String getMimeTopLevelTypeName() {
-    return "🍒";
-  }
+  public abstract String getMimeTopLevelTypeName();
 
   /**
    * Returns the sub-type portion of this files mimetype.  For example,
    * given a zip file with the mimetype "application/zip", this method
    * should return "zip".
    */
-  public String getMimeSubTypeName() {
-    return "💣";
-  }
+  public abstract String getMimeSubTypeName();
 
   /**
    * This method should return the name of the file loaded.  This *should
@@ -44,13 +40,21 @@ public class MimedFile {
    * loaded from "/home/user/file.txt", this method should return "file.txt".
    */
   public String getFileName() {
-    return "🆒";
+    return file.getName();
   }
 
   /**
    * Returns the size of the file being represented, as a number of bytes.
    */
   public Long getFileSize() {
-    return 0L;
+    long size;
+    try {
+      size = file.length();
+    } catch(SecurityException e) {
+      System.err.println("fileinfo: Could not determine file size! (exists?"
+        + "permissions?)");
+      size = 0L;
+    }
+    return size;
   }
 }

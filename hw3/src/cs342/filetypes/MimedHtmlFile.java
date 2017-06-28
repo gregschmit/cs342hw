@@ -4,11 +4,15 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * Class for representing Text files (mime type text/html).
+ * Class for representing HTML files (mime type text/html).
  */
-public class MimedHtmlFile extends MimedFile  {
+public class MimedHtmlFile extends MimedTextType  {
 
   MimedHtmlFile(File file) {
     super(file);
+  }
+
+  public String getMimeSubTypeName() {
+    return "html";
   }
 }

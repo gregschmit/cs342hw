@@ -8,11 +8,15 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipException;
 
 /**
- * Class for representing Text files (mime type application/x-java-archive).
+ * Class for representing Jar files (mime type application/x-java-archive).
  */
-public class MimedJarFile extends MimedFile {
+public class MimedJarFile extends MimedApplicationType {
 
   MimedJarFile(File file) {
     super(file);
+  }
+
+  public String getMimeSubTypeName() {
+    return "x-java-archive";
   }
 }

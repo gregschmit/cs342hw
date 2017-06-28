@@ -8,11 +8,15 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
 /**
- * Class for representing Text files (mime type image/png).
+ * Class for representing PNG files (mime type image/png).
  */
-public class MimedPngFile extends MimedFile {
+public class MimedPngFile extends MimedImageType {
 
   MimedPngFile(File file) {
     super(file);
+  }
+
+  public String getMimeSubTypeName() {
+    return "png";
   }
 }
