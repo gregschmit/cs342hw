@@ -91,6 +91,10 @@ Requirements
 ---
 Your code should meet all of the following requirements:
 
+* You cannot write any loops in this code.  No exceptions.  You will need
+  to use lambda, collection methods, and / or recursion.  Any `for`, `do`
+  or `while` statements in your code will be a 50% reduction in the homework's
+  grade.
 * You should only make changes to the `DataPoint.java` and `Filter.java`
   files.  You can create other classes / files if you'd like, but you should
   not make any changes to any of the other provided files.
