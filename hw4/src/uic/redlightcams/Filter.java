@@ -1,10 +1,12 @@
 package uic.redlightcams;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
+import uic.redlightcams.DataPoint;
+import uic.redlightcams.FilterException;
 import uic.redlightcams.config.FilterParams;
-import uic.redlightcams.data.DataPoint;
+import uic.redlightcams.enums.OutputOptions;
 
 /**
  * Class that handles the hard work of reading DataPoint records out of
@@ -13,11 +15,19 @@ import uic.redlightcams.data.DataPoint;
  */
 public class Filter {
 
-  protected ArrayList<DataPoint> data;
+  protected List<DataPoint> data;
 
-  public Filter(File inputFile) {
+  /**
+   * Constructor for object for filtering DataPoint results.
+   *
+   * @param inputFile File   A file object pointing at JSON data to process.
+   *
+   * @throws FilterException If there was an error processing, or otherwise
+   *                         processing the data set.
+   */
+  public Filter(File inputFile) throws FilterException {
     // Your code should do something here to parse the inputFile into a series
-    // uic.redlightcams.data.DataPoint objects.
+    // uic.redlightcams.DataPoint objects.
   }
 
   /**
@@ -27,8 +37,7 @@ public class Filter {
    * with the filtering, sorting and aggregating parameters described by
    * the provided filtering paramters applied.
    *
-   * <p>In the general case, this will be a comma seperated value (CSV)
-   * formatted report, of columns:
+   * <p>In the general case, this will be a rows of columns:
    *   - Intersection
    *   - Camera ID
    *   - Address
@@ -38,7 +47,7 @@ public class Filter {
    *   - Longitude
    *
    * <p>If, though, were aggregating / merging all dates for each camera, then
-   * the generated CSV should have the columns:
+   * the generated rows should have the columns:
    *   - Intersection
    *   - Camera ID
    *   - Address
@@ -48,11 +57,17 @@ public class Filter {
    *
    * @param params FilterParams Settings describing how to modify or restrict
    *                            the data set.
+   * @param outputType OutputOptions The type of output to generate (JSON or
+   *                                 or CSV).
    *
    * @return String A textual description of the sorted, filtered and aggregated
    *                data set.
+   *
+   * @throws FilterException If there was an error processing, or otherwise
+   *                         processing the data set.
    */
-  public String generateReport(FilterParams params) {
+  public String generateReport(FilterParams params, OutputOptions outputType)
+      throws FilterException {
     return null;
   }
 }

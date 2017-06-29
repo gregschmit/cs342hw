@@ -1,6 +1,5 @@
-package uic.redlightcams.data;
+package uic.redlightcams;
 
-import java.util.List;
 import org.json.JSONArray;
 
 /**
@@ -9,6 +8,4 @@ import org.json.JSONArray;
  */
 public class DataPoint {
 
-  DataPoint(JSONArray jsonArray) {
-  }
 }

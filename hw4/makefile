@@ -11,8 +11,3 @@ build:
 check:
 	@echo "Checking coding style compliance"
 	@java -jar lib/checkstyle-7.8.2-all.jar -c data/google_checks.xml `find src -type f -name "*.java"`
-
-run:
-	@echo "Running your program"
-	@java -cp bin:lib/json-20170516.jar:lib/argparse4j-0.7.0.jar Main
-

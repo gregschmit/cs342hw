@@ -6,8 +6,10 @@ import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;
 import net.sourceforge.argparse4j.inf.Namespace;
 import uic.redlightcams.Filter;
+import uic.redlightcams.FilterException;
 import uic.redlightcams.config.FilterParams;
 import uic.redlightcams.enums.Column;
+import uic.redlightcams.enums.OutputOptions;
 import uic.redlightcams.enums.SortDirection;
 
 
@@ -34,10 +36,10 @@ public class Main {
         .type(Column.class)
         .help("A column to filter the data set on.  If you select a "
               + "filter column, you must specify a filter value with "
-              + "--fval");
+              + "'--fval'");
 
     parser.addArgument("--fval")
-        .help("The value to fitler the given filter column with.  If -fcol "
+        .help("The value to fitler the given filter column with.  If '--fcol' "
               + "is not specified, this value is ignored.");
 
     parser.addArgument("--scol")
@@ -46,13 +48,14 @@ public class Main {
       
     parser.addArgument("--sdir")
         .type(SortDirection.class)
-        .help("The direction to sort the given sort column in.  If -scol "
+        .help("The direction to sort the given sort column in.  If '--scol' "
               + "is not provided, this argument is ignored.");
 
     parser.addArgument("--dist")
         .type(Integer.class)
         .help("If provided, reduces the set of data points to only those that "
-              + "are --dist number of miles from UIC (41.8756° N, 87.6244° W)");
+              + "are '--dist' number of miles from UIC "
+              + "(41.8756° N, 87.6244° W)");
     
     parser.addArgument("--merge")
         .action(Arguments.storeTrue())
@@ -61,6 +64,10 @@ public class Main {
               + "volations' column would be the sum of all the voliations "
               + "that were recorded on each camera, across all relevant "
               + "dates.");
+    
+    parser.addArgument("--ouput")
+        .type(OutputOptions.class)
+        .required(true);
 
     Namespace res;
     try {
@@ -110,13 +117,20 @@ public class Main {
       filterConfig.setMilesFromUic(miles);
     }
 
-    if (res.getBoolean("merge") == true) {
+    if (res.getBoolean("merge")) {
       filterConfig.setShouldMerge(true);
     }
 
     File inputData = new File("data/red-light-camera-violations.json");
-    Filter recordFilterer = new Filter(inputData);
-    String report = recordFilterer.generateReport(filterConfig);
-    System.out.print(report);
+
+    try {
+      Filter recordFilterer = new Filter(inputData);
+      String report = recordFilterer.generateReport(filterConfig, res.get("output"));
+      System.out.print(report);
+      System.exit(0);
+    } catch (FilterException error) {
+      System.err.print(error.toString());
+      System.exit(1);
+    }
   }
 }
