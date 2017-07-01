@@ -2,6 +2,7 @@ package uic.redlightcams;
 
 import java.io.File;
 import java.util.List;
+import java.util.stream.Stream;
 import org.json.JSONArray;
 import uic.redlightcams.DataPoint;
 import uic.redlightcams.FilterException;
@@ -20,12 +21,13 @@ public class Filter {
   /**
    * Constructor for object for filtering DataPoint results.
    *
-   * @param inputFile File   A file object pointing at JSON data to process.
+   * @param jsonRecords Stream  A stream of JSONArray items, each describing a
+   *                            single redlight camera datapoint.
    *
    * @throws FilterException If there was an error processing, or otherwise
    *                         processing the data set.
    */
-  public Filter(File inputFile) throws FilterException {
+  public Filter(Stream<JSONArray> jsonRecords) throws FilterException {
     // Your code should do something here to parse the inputFile into a series
     // uic.redlightcams.DataPoint objects.
   }

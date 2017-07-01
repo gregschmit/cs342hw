@@ -22,14 +22,14 @@ in the provided code):
     `uic.redlightcams.DataPoint` instances.
 2.  (Possibly) filter the data set by user provided parameters.  These filters
     include options like "only include records from camera ###" (i.e.
-    `./camerafilter -fcol CAMERA_ID -fval 2123`), "only include records
-    that were recorded at a given intersection" (i.e. `./camerafilter -fcol
-    INTERSECTION -fval "CLARK AND FULLERTON"`), or "only include records that
+    `./camerafilter --fcol CAMERA_ID --fval 2123`), "only include records
+    that were recorded at a given intersection" (i.e. `./camerafilter --fcol
+    INTERSECTION --fval "CLARK AND FULLERTON"`), or "only include records that
     occured within 3 miles of UIC (i.e. `./camerafilter --dist 3`).
 3.  (Possibly) sort the data set by user provided parameters.  For example,
-    "show me records, most recent first" (i.e. `./camerafilter -scol DATE
-    -sdir DESC`) or "show me the records, sorted by camera ID" (i.e.
-    `./camerafilter -scol CAMERA_ID -sdir ASC`).
+    "show me records, most recent first" (i.e. `./camerafilter --scol DATE
+    --sdir DESC`) or "show me the records, sorted by camera ID" (i.e.
+    `./camerafilter --scol CAMERA_ID --sdir ASC`).
 4.  (Possibly) aggregate the dataset across dates (see below for more details).
 5.  Print the resulting data set out, either as a JSON encoded text string,
     or a CSV file, depending on the user provided parameters (i.e.
