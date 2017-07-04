@@ -100,7 +100,7 @@ Your code should meet all of the following requirements:
   not make any changes to any of the other provided files.
 * Your code should correctly handle all errors.  Your code *must not* ever
   exit, or print anything to STDOUT or STDERR. Doing so is inappropriate
-  for library code.  All output or exiting must be handlded by the code
+  for library code.  All output or exiting must be handled by the code
   calling into your libraries (i.e. `Main.java`).  TL;DR, you must handle
   error cases by throwing exceptions, not printing debug messages or
   exiting.
