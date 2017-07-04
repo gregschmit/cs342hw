@@ -1,0 +1,11 @@
+Correct taxonomy: 2pts
+Correctly handle error message: 1pts
+ Read test cases below
+Correctly mark classes and methods abstract: 5pts
+ -1pts: count line and get the array list of line should not be implemented in MimedFile.
+ Following the way you implemented, now all the image and application file types have these 
+ methods
+Correctly run test cases:6pts
+ -2pts: test with image file saved in pdf format: null pointer exception not handled
+ -2pts: test with text file saved in jpg format: produced normal values without error
+Total: 14/20pts
