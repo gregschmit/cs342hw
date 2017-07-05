@@ -9,6 +9,9 @@ import uic.redlightcams.FilterException;
 import uic.redlightcams.config.FilterParams;
 import uic.redlightcams.enums.OutputOptions;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 /**
  * Class that handles the hard work of reading DataPoint records out of
  * a JSON file, and then filtering them accoring to some given configuraiton
@@ -30,6 +33,8 @@ public class Filter {
   public Filter(Stream<JSONArray> jsonRecords) throws FilterException {
     // Your code should do something here to parse the inputFile into a series
     // uic.redlightcams.DataPoint objects.
+    data = new ArrayList<DataPoint>();
+    jsonRecords.forEach(entry -> data.add(new DataPoint(entry)));
   }
 
   /**
@@ -70,6 +75,7 @@ public class Filter {
    */
   public String generateReport(FilterParams params, OutputOptions outputType)
       throws FilterException {
+    
     return null;
   }
 }
