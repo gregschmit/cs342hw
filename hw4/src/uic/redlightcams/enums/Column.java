@@ -8,5 +8,8 @@ public enum Column {
   INTERSECTION,
   CAMERA_ID,
   ADDRESS,
-  DATE;
+  DATE,
+  VIOLATIONS,
+  LATITUDE,
+  LONGITUDE;
 }

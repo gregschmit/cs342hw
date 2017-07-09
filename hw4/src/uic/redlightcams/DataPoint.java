@@ -1,25 +1,14 @@
 package uic.redlightcams;
 
-import org.json.JSONArray;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import org.json.JSONArray;
 
 /**
  * This class represents a single day's datapoint for information about
  * how many violations were recorded at a given location, on a give date.
  */
 public class DataPoint {
-
-  protected class Coordinates {
-    public double latitude;
-    public double longitude;
-
-    Coordinates(double in_lat, double in_long) {
-      latitude = in_lat;
-      longitude = in_long;
-    }
-  }
 
   // 1.  Intersection of recording
   // 2.  ID of the camera doing the recording
@@ -32,20 +21,37 @@ public class DataPoint {
   public Integer id;
   public String address;
   public LocalDateTime date;
-  public Integer violation_count;
-  public Coordinates coordinates;
+  public Integer violationCount;
+  public Double latitude;
+  public Double longitude;
+  public boolean isMerged;
+
+  DataPoint(DataPoint entry) {
+    this.intersection = new String(entry.intersection);
+    this.id = new Integer(entry.id);
+    this.address = new String(entry.address);
+    this.date = LocalDateTime.parse(entry.date.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+    this.violationCount = new Integer(entry.violationCount);
+    this.latitude = new Double(entry.latitude);
+    this.longitude = new Double(entry.longitude);
+    this.isMerged = entry.isMerged;
+  }
 
   DataPoint(JSONArray entry) {
-    intersection = new String(entry.getString(0));
+    this.intersection = new String(entry.getString(0));
     if (!entry.isNull(1)) {
-      id = new Integer(entry.getInt(1));
+      this.id = new Integer(entry.getInt(1));
     } else {
-      id = -1;
+      this.id = -1;
     }
-    address = entry.getString(2);
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-    date = LocalDateTime.parse(entry.getString(3), formatter);
-    violation_count = new Integer(entry.getInt(4));
-    coordinates = new Coordinates(Double.parseDouble(entry.getString(5)), Double.parseDouble(entry.getString(6)));
+    this.address = entry.getString(2);
+    if (this.id == -1) {
+      this.intersection = "UNKNOWN";
+      this.address = "UNKNOWN";
+    }
+    this.date = LocalDateTime.parse(entry.getString(3));
+    this.violationCount = new Integer(entry.getInt(4));
+    this.latitude = new Double(Double.parseDouble(entry.getString(5)));
+    this.longitude = new Double(Double.parseDouble(entry.getString(6)));
   }
 }
