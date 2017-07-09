@@ -212,7 +212,6 @@ public class Filter {
     }
     // merge data
     if (params.getShouldMerge()) {
-      System.out.println("merging...\n\n");
       ArrayList<DataPoint> newdata = new ArrayList<DataPoint>();
       while (data.size() > 0) {
         DataPoint current = data.get(0);
@@ -226,10 +225,8 @@ public class Filter {
             mergeEntry.violationCount += entry.violationCount;
           }
         }
-        System.out.println(mergeEntry.violationCount);
         data.removeAll(found);
         newdata.add(mergeEntry);
-        System.out.println("added mergeEntry");
       }
       this.data = newdata;
     }
