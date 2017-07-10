@@ -18,8 +18,7 @@ public class SentenceParserTest {
   /**
    * Reads a file into a String, normalizing the line endings to unix endings.
    *
-   * @param pathName String The path to file on disk, in the tests/data
-   *                        subdirectory
+   * @param pathName The path to file on disk, in the tests/data subdirectory.
    *
    * @return The contents of file at the given path, as a String.
    *
@@ -36,7 +35,7 @@ public class SentenceParserTest {
   /**
    * Turns a list of strings into a single string, by joining with "\n".
    *
-   * @param inputList List&lt;String&gt; A list of strings.
+   * @param inputList A list of strings.
    *
    * @return The strings in the provided list, joined with unix new line
    *         characters.
@@ -48,8 +47,7 @@ public class SentenceParserTest {
   /**
    * Runs a test text through the SentenceParser class, joined as a String.
    *
-   * @param pathName String The path to file on disk, in the tests/data
-   *                        subdirectory
+   * @param pathName The path to file on disk, in the tests/data subdirectory.
    *
    * @return The result of parsing the test text through the SentenceParser,
    *         returned as a single string, with each given sentence on
