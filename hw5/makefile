@@ -10,7 +10,7 @@ build:
 
 check:
 	@echo "Checking coding style compliance"
-	@java -jar lib/checkstyle-7.8.2-all.jar -c data/google_checks.xml `find src -type f -name "*.java"`
+	@java -jar lib/checkstyle-7.8.2-all.jar -c data/google_checks.xml `find . -type f -name "*.java"`
 
 cases: clean build
 	@java -cp bin:lib/hamcrest-core-1.3.jar:lib/junit-4.12.jar org.junit.runner.JUnitCore `find tests -type f -name "*.java" | sed 's/\.java//g' | sed 's/tests\///g'`
