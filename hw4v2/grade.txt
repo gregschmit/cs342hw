@@ -1,0 +1,5 @@
+Pass make check: 3pts
+Document code: 1pts (missing some)
+Pass 5 test cases: 20pts
+
+Total 24 x 75% = 18
