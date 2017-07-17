@@ -1,18 +1,28 @@
 package edu.uic.cs342;
 
-import java.util.List;
+import edu.uic.cs342.SentenceParserException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
-import org.json.JSONArray;
 
 public class SentenceParser {
 
-  public JSONArray asJsonArray(String inputTest) {
-    return null;
-  }
+  /**
+   * Parses a given text and splits it into sentences.
+   *
+   * @param text A text to split into sentences.
+   *
+   * @return A list of Strings, each being a full English sentence.
+   *
+   * @throws SentenceParserException Generic exception class to indicate
+   *                                 something went wrong during parsing
+   *                                 the text into sentences.
+   */
+  public List<String> asList(String text) throws SentenceParserException {
 
-  public List<String> asList(String inputTest) {
-    return Arrays.asList(inputTest.trim().split("\\.")).stream()
+    String[] sentencesWithOutPeriods = text.trim().split("\\.");
+
+    return Arrays.asList(sentencesWithOutPeriods).stream()
         .map(x -> x.trim() + ".")
         .collect(Collectors.toList());
   }

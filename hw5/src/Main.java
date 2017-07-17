@@ -1,5 +1,5 @@
-import edu.uic.cs342.OutputOptions;
 import edu.uic.cs342.SentenceParser;
+import edu.uic.cs342.SentenceParserException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
@@ -36,11 +36,6 @@ public class Main {
         .help("A file path to read a text from.  If not provided, text is read"
               + " from STDIN.");
 
-    argParser.addArgument("--output")
-        .type(OutputOptions.class)
-        .setDefault(OutputOptions.TEXT)
-        .required(true);
-
     Namespace res;
     try {
       res = argParser.parseArgs(args);
@@ -52,7 +47,6 @@ public class Main {
 
     String inputPath = res.get("path");
     Charset utf8 = StandardCharsets.UTF_8;
-
     String inputText = null;
 
     if (inputPath != null) {
@@ -74,17 +68,14 @@ public class Main {
 
     }
 
-    OutputOptions outputOption = res.get("output");
-
     SentenceParser parser = new SentenceParser();
-    switch (outputOption) {
-      case JSON:
-        System.out.print(parser.asJsonArray(inputText));
-        break;
-
-      case TEXT:
-        System.out.print(parser.asList(inputText));
-        break;
+    try {
+      String parserOutput = parser.asList(inputText).stream()
+          .collect(Collectors.joining("\n"));
+      System.out.print(parserOutput);
+    } catch (SentenceParserException error) {
+      System.err.print(error.toString());
+      System.exit(1);
     }
   }
 }
