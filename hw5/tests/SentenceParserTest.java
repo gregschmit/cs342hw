@@ -78,4 +78,40 @@ public class SentenceParserTest {
 
     Assert.assertEquals(correctResult, testResult);
   }
+
+  /**
+   * Ellipses
+   */
+  @Test
+  public void toSentencesExample2Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("2-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("2-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+  /**
+   * Abbreviations such as Mr., Mrs.
+   */
+  @Test
+  public void toSentencesExample3Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("3-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("3-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+  /**
+   * Other sentence-ending punctuation like '!' and '?'
+   */
+  @Test
+  public void toSentencesExample4Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("4-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("4-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
 }
