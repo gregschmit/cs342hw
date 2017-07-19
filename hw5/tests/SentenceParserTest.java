@@ -80,7 +80,9 @@ public class SentenceParserTest {
   }
 
   /**
-   * Ellipses
+   * Testing sentences with ellipses
+   *
+   * <p>Ellipses can appear to be the end of a sentence when they are not.
    */
   @Test
   public void toSentencesExample2Test() throws IOException, SentenceParserException {
@@ -92,7 +94,9 @@ public class SentenceParserTest {
   }
 
   /**
-   * Abbreviations such as Mr., Mrs.
+   * Testing sentences with abbreviations (such as Mr., Mrs.)
+   *
+   * <p>We need to distinguish between abbreviations and sentence ending periods.
    */
   @Test
   public void toSentencesExample3Test() throws IOException, SentenceParserException {
@@ -104,13 +108,124 @@ public class SentenceParserTest {
   }
 
   /**
-   * Other sentence-ending punctuation like '!' and '?'
+   * Testing sentences with other sentence-ending punctuation like '!' and '?'
    */
   @Test
   public void toSentencesExample4Test() throws IOException, SentenceParserException {
 
     String correctResult = SentenceParserTest.fileToString("4-correct.txt");
     String testResult = SentenceParserTest.fileToTestResult("4-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+  /**
+   * 5: Testing sentences with quotation marks outside of the punctuation
+   *
+   * <p>Proper American English places the quotation mark outside of
+   *    punctuation, which means that a quote can end a sentence.
+   */
+  @Test
+  public void toSentencesExample5Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("5-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("5-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+  /**
+   * 6: Testing sentences with sentence in quotes of a parent sentence
+   *
+   * <p>A quoted sentence can appear to be a sentence on its own.
+   */
+  @Test
+  public void toSentencesExample6Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("6-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("6-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+  /**
+   * 7: Testing sentences where an abbreviation ends a sentence
+   *
+   * <p>An abbreviation can end a sentence, which means that the period used
+   *    is in fact a sentence ending period.
+   */
+  @Test
+  public void toSentencesExample7Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("7-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("7-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+  /**
+   * 8: Testing sentences with double sentences in quotes of parent sentence
+   *
+   * <p>Multiple quoted sentences can be hard to distinguish as all part of one
+   *    sentence.
+   */
+  @Test
+  public void toSentencesExample8Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("8-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("8-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+  /**
+   * 9: Testing sentences with a quoted exclamation and another *phrase*
+   *
+   * <p>A phrase that belongs with a quote can appear to be two sentences.
+   */
+  @Test
+  public void toSentencesExample9Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("9-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("9-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+  /**
+   * 10: Testing sentences with a quoted exclamation and another *sentence*
+   *
+   * <p>A separate sentence next to a quote can appear to be one sentence.
+   */
+  @Test
+  public void toSentencesExample10Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("10-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("10-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+  /**
+   * 11: Testing sentences with quantities that have a period in them
+   */
+  @Test
+  public void toSentencesExample11Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("11-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("11-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+  /**
+   * 12: Testing nested quoted sentences
+   */
+  @Test
+  public void toSentencesExample12Test() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("12-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("12-test.txt");
 
     Assert.assertEquals(correctResult, testResult);
   }

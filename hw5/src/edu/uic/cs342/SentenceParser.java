@@ -15,9 +15,26 @@ public class SentenceParser {
    */
   private class SentenceMarker {
 
+    /**
+     * Represents the start position of the sentence
+     */
     public Integer start;
+
+    /**
+     * Represents the end position of the sentence
+     */
     public Integer end;
 
+    /**
+     * Constructor for the SentenceMarker Class
+     *
+     * <p>This constructor will set the start and end points, unless the start
+     *    is after the end, in which case both will be set to null.
+     *
+     * @param start int Represents the start position of the sentence
+     *
+     * @param end int Represents the end position of the sentence
+     */
     SentenceMarker(int start, int end) {
       if (start < end) {
         this.start = new Integer(start);
@@ -28,18 +45,38 @@ public class SentenceParser {
       }
     }
 
+    /**
+     * Method that checks to see if this sentence is contained by another
+     *
+     * @param other SentenceMarker The other sentence to check against
+     */
     public boolean contained_by(SentenceMarker other) {
       return (this.start > other.start && this.end < other.end);
     }
 
+    /**
+     * Method that checks to see if this sentence contains another
+     *
+     * @param other SentenceMarker The other sentence to check against
+     */
     public boolean contains(SentenceMarker other) {
       return (this.start < other.start && this.end > other.end);
     }
 
+    /**
+     * Method that checks to see if this sentence overlaps another
+     *
+     * @param other SentenceMarker The other sentence to check against
+     */
     public boolean dependant_on(SentenceMarker other) {
       return (this.contained_by(other) || this.contains(other));
     }
 
+    /**
+     * Method that checks to see if this sentence is before another
+     *
+     * @param other SentenceMarker The other sentence to check against
+     */
     public boolean is_before(SentenceMarker other) {
       return (this.end < other.start);
     }
