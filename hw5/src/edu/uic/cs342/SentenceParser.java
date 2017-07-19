@@ -8,8 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// A simple change made by John Doe, that bastard
-
 public class SentenceParser {
 
   /**
