@@ -1,0 +1,6 @@
+Pass make check: 0pts
+Documented: 3pts
+Create 10 test cases: 20pts
+Pass 5 test cases: 4pts (fail 1, 2 and 4)
+
+Total: 27/36

@@ -229,4 +229,49 @@ public class SentenceParserTest {
 
     Assert.assertEquals(correctResult, testResult);
   }
+
+  @Test
+  public void toSentencesTATest1() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("ta-1-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("ta-1-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+@Test
+  public void toSentencesTATest2() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("ta-2-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("ta-2-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+@Test
+  public void toSentencesTATest3() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("ta-3-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("ta-3-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+@Test
+  public void toSentencesTATest4() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("ta-4-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("ta-4-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
+
+@Test
+  public void toSentencesTATest5() throws IOException, SentenceParserException {
+
+    String correctResult = SentenceParserTest.fileToString("ta-5-correct.txt");
+    String testResult = SentenceParserTest.fileToTestResult("ta-5-test.txt");
+
+    Assert.assertEquals(correctResult, testResult);
+  }
 }
